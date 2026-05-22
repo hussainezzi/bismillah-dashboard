@@ -72,6 +72,111 @@ def get_inventory_valuation(uid, models):
     }
 
 
+def get_cashflow_forecast(uid, models):
+    """Get cash flow forecast based on pending invoices."""
+    today = datetime.now()
+    cutoff = today + timedelta(days=30)
+    
+    def get_company_name(cid):
+        if not cid: return 'Unknown'
+        c = models.execute_kw(DB, uid, PASS, 'res.company', 'read', [cid[0], ['name']])
+        return c[0]['name']
+    
+    # Customer invoices (money in) — posted, not paid, due within 30 days
+    customer_invoices = models.execute_kw(DB, uid, PASS, 'account.move', 'search_read',
+        [[['move_type', '=', 'out_invoice'],
+          ['state', '=', 'posted'],
+          ['payment_state', 'in', ['not_paid', 'partial']],
+          ['invoice_date_due', '<=', cutoff.strftime('%Y-%m-%d')]]],
+        {'fields': ['name', 'partner_id', 'amount_total', 'amount_residual',
+                    'invoice_date', 'invoice_date_due', 'company_id', 'amount_residual_signed']})
+    
+    # All customer invoices (for total outstanding)
+    all_customer = models.execute_kw(DB, uid, PASS, 'account.move', 'search_read',
+        [[['move_type', '=', 'out_invoice'],
+          ['state', '=', 'posted'],
+          ['payment_state', 'in', ['not_paid', 'partial']]]],
+        {'fields': ['name', 'partner_id', 'amount_total', 'amount_residual',
+                    'invoice_date', 'invoice_date_due', 'company_id', 'amount_residual_signed']})
+    
+    # Vendor bills (money out) — posted, not paid, due within 30 days
+    vendor_bills = models.execute_kw(DB, uid, PASS, 'account.move', 'search_read',
+        [[['move_type', '=', 'in_invoice'],
+          ['state', '=', 'posted'],
+          ['payment_state', 'in', ['not_paid', 'partial']],
+          ['invoice_date_due', '<=', cutoff.strftime('%Y-%m-%d')]]],
+        {'fields': ['name', 'partner_id', 'amount_total', 'amount_residual',
+                    'invoice_date', 'invoice_date_due', 'company_id', 'amount_residual_signed']})
+    
+    all_vendor = models.execute_kw(DB, uid, PASS, 'account.move', 'search_read',
+        [[['move_type', '=', 'in_invoice'],
+          ['state', '=', 'posted'],
+          ['payment_state', 'in', ['not_paid', 'partial']]]],
+        {'fields': ['name', 'partner_id', 'amount_total', 'amount_residual',
+                    'invoice_date', 'invoice_date_due', 'company_id', 'amount_residual_signed']})
+    
+    # Build money in list
+    cash_in = []
+    total_in_30 = 0
+    for inv in customer_invoices:
+        partner = models.execute_kw(DB, uid, PASS, 'res.partner', 'read', [inv['partner_id'][0], ['name']])
+        pname = partner[0].get('name', '')
+        due = inv.get('amount_residual_signed') or inv.get('amount_residual') or 0
+        total_in_30 += due
+        cash_in.append({
+            'ref': inv['name'],
+            'customer': pname,
+            'company': get_company_name(inv.get('company_id')),
+            'due_date': (inv.get('invoice_date_due') or '')[:10],
+            'amount': round(due),
+            'overdue': (inv.get('invoice_date_due') or '')[:10] < today.strftime('%Y-%m-%d') if inv.get('invoice_date_due') else False
+        })
+    
+    total_receivable = sum(
+        (inv.get('amount_residual_signed') or inv.get('amount_residual') or 0)
+        for inv in all_customer
+    )
+    
+    # Build money out list
+    cash_out = []
+    total_out_30 = 0
+    for bill in vendor_bills:
+        partner = models.execute_kw(DB, uid, PASS, 'res.partner', 'read', [bill['partner_id'][0], ['name']])
+        pname = partner[0].get('name', '')
+        due = bill.get('amount_residual_signed') or bill.get('amount_residual') or 0
+        due_abs = abs(due) if due < 0 else due
+        total_out_30 += due_abs
+        cash_out.append({
+            'ref': bill['name'],
+            'vendor': pname,
+            'company': get_company_name(bill.get('company_id')),
+            'due_date': (bill.get('invoice_date_due') or '')[:10],
+            'amount': round(due_abs),
+            'overdue': (bill.get('invoice_date_due') or '')[:10] < today.strftime('%Y-%m-%d') if bill.get('invoice_date_due') else False
+        })
+    
+    total_payable = sum(
+        abs(inv.get('amount_residual_signed') or inv.get('amount_residual') or 0)
+        for inv in all_vendor
+    )
+    
+    cash_in.sort(key=lambda x: x['due_date'])
+    cash_out.sort(key=lambda x: x['due_date'])
+    
+    return {
+        'forecast_date': today.strftime('%d-%b-%Y'),
+        'forecast_until': cutoff.strftime('%d-%b-%Y'),
+        'total_in_30': round(total_in_30),
+        'total_out_30': round(total_out_30),
+        'net_30': round(total_in_30 - total_out_30),
+        'total_receivable': round(total_receivable),
+        'total_payable': round(total_payable),
+        'overdue_count': sum(1 for i in cash_in if i.get('overdue')),
+        'cash_in': cash_in,
+        'cash_out': cash_out
+    }
+
+
 def main():
     uid, models = connect()
     today = date.today()
@@ -199,6 +304,9 @@ def main():
     # ── Inventory Valuation ──
     inventory = get_inventory_valuation(uid, models)
 
+    # ── Cash Flow Forecast ──
+    cashflow = get_cashflow_forecast(uid, models)
+
     output = {
         'generated_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'period': f'1-{first_of_month.strftime("%b")} to {today.strftime("%d-%b-%Y")}',
@@ -209,12 +317,13 @@ def main():
         'products': fmt_products(),
         'customers': fmt_customers(),
         'stock_alerts': stock_alerts,
-        'inventory': inventory
+        'inventory': inventory,
+        'cashflow': cashflow
     }
 
     with open('data.json', 'w') as f:
         json.dump(output, f, indent=2)
-    print(f'✅ data.json generated — {month_orders} orders, {active_customers} customers, {critical_count} low-stock items, Rs. {inventory["total_value"]:,} inventory value')
+    print(f'✅ data.json — {month_orders} orders, {active_customers} customers, {critical_count} low-stock, Rs. {inventory["total_value"]:,} inv, Rs. {cashflow["net_30"]:,} net CF')
 
 if __name__ == '__main__':
     main()

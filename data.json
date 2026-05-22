@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-22 21:51:16",
-  "period": "1-May to 22-May-2026",
+  "generated_at": "2026-05-23 00:42:52",
+  "period": "1-May to 23-May-2026",
   "month_total": 118629,
   "month_orders": 15,
   "active_customers": 4,
@@ -147,24 +147,24 @@
       "sku": "FURN_6667",
       "stock": 16,
       "sold": 36,
-      "daily": 1.64,
-      "days_left": 9.8
+      "daily": 1.57,
+      "days_left": 10.2
     },
     {
       "name": "Office Chair Black",
       "sku": "FURN_0269",
       "stock": 10,
       "sold": 14,
-      "daily": 0.64,
-      "days_left": 15.7
+      "daily": 0.61,
+      "days_left": 16.4
     },
     {
       "name": "Large Cabinet",
       "sku": "E-COM07",
       "stock": 230,
       "sold": 300,
-      "daily": 13.64,
-      "days_left": 16.9
+      "daily": 13.04,
+      "days_left": 17.6
     }
   ],
   "inventory": {
@@ -369,6 +369,124 @@
         "qty": 1267,
         "value": 359360,
         "pct": 100.0
+      }
+    ]
+  },
+  "cashflow": {
+    "forecast_date": "23-May-2026",
+    "forecast_until": "22-Jun-2026",
+    "total_in_30": 1389230,
+    "total_out_30": 1255,
+    "net_30": 1387975,
+    "total_receivable": 1561127,
+    "total_payable": 19195,
+    "overdue_count": 11,
+    "cash_in": [
+      {
+        "ref": "INV/2026/00007",
+        "customer": "Acme Corporation",
+        "company": "Bismillah Traders",
+        "due_date": "2026-04-21",
+        "amount": 31750,
+        "overdue": true
+      },
+      {
+        "ref": "INV/2026/00004",
+        "customer": "Acme Corporation",
+        "company": "Makkah Lockers",
+        "due_date": "2026-04-21",
+        "amount": 31750,
+        "overdue": true
+      },
+      {
+        "ref": "INV/2026/00005",
+        "customer": "Acme Corporation",
+        "company": "Bismillah Traders",
+        "due_date": "2026-05-06",
+        "amount": 41750,
+        "overdue": true
+      },
+      {
+        "ref": "INV/2026/00002",
+        "customer": "Acme Corporation",
+        "company": "Makkah Lockers",
+        "due_date": "2026-05-06",
+        "amount": 41750,
+        "overdue": true
+      },
+      {
+        "ref": "INV/2026/00006",
+        "customer": "Acme Corporation",
+        "company": "Bismillah Traders",
+        "due_date": "2026-05-06",
+        "amount": 19250,
+        "overdue": true
+      },
+      {
+        "ref": "INV/2026/00003",
+        "customer": "Acme Corporation",
+        "company": "Makkah Lockers",
+        "due_date": "2026-05-06",
+        "amount": 19250,
+        "overdue": true
+      },
+      {
+        "ref": "INV/2026/00001",
+        "customer": "Ai with Ezzi",
+        "company": "Madinah Stainless",
+        "due_date": "2026-05-07",
+        "amount": 86400,
+        "overdue": true
+      },
+      {
+        "ref": "INV/2026/00009",
+        "customer": "Hozefa",
+        "company": "Bismillah Traders",
+        "due_date": "2026-05-09",
+        "amount": 2340,
+        "overdue": true
+      },
+      {
+        "ref": "INV/2026/00010",
+        "customer": "Mr A",
+        "company": "Bismillah Traders",
+        "due_date": "2026-05-10",
+        "amount": 1053000,
+        "overdue": true
+      },
+      {
+        "ref": "INV/2026/00011",
+        "customer": "Anthony",
+        "company": "Bismillah Traders",
+        "due_date": "2026-05-11",
+        "amount": 59000,
+        "overdue": true
+      },
+      {
+        "ref": "INV/2026/00002",
+        "customer": "Huzefa Bhai Ali Bhai",
+        "company": "Madinah Stainless",
+        "due_date": "2026-05-17",
+        "amount": 2990,
+        "overdue": true
+      }
+    ],
+    "cash_out": [
+      {
+        "ref": "BILL/2025/02/0001",
+        "vendor": "Azure Interior",
+        "company": "Bismillah Traders",
+        "due_date": "2026-05-06",
+        "amount": 633,
+        "overdue": true
+      },
+      {
+        "ref": "BILL/2025/02/0001",
+        "vendor": "Azure Interior",
+        "company": "Makkah Lockers",
+        "due_date": "2026-05-06",
+        "amount": 622,
+        "overdue": true
       }
     ]
   }

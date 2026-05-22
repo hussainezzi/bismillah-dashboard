@@ -72,6 +72,62 @@
             </div>
         </div>
 
+        <!-- CASH FLOW FORECAST SECTION -->
+        <h3 class="section-title">💵 Cash Flow Forecast (Next 30 Days)</h3>
+        <div class="row g-3 mb-4">
+            <div class="col-md-3 col-6">
+                <div class="stat-card inv text-center">
+                    <div class="number" id="cf-in" style="color:#2e7d32">—</div>
+                    <div class="label">Expected Cash In</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card inv text-center">
+                    <div class="number" id="cf-out" style="color:#c62828">—</div>
+                    <div class="label">Expected Cash Out</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card inv text-center">
+                    <div class="number" id="cf-net">—</div>
+                    <div class="label">Net Position</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card inv text-center">
+                    <div class="number" id="cf-overdue" style="color:#c62828">—</div>
+                    <div class="label">Overdue Invoices</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <div class="card"><div class="card-header">💰 Cash In — Customer Invoices Due</div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive" style="max-height:300px; overflow-y:auto">
+                            <table class="table table-hover mb-0">
+                                <thead><tr><th>Invoice</th><th>Customer</th><th>Company</th><th>Due</th><th>Amount</th></tr></thead>
+                                <tbody id="cf-in-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card"><div class="card-header">💸 Cash Out — Vendor Bills Due</div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive" style="max-height:300px; overflow-y:auto">
+                            <table class="table table-hover mb-0">
+                                <thead><tr><th>Bill</th><th>Vendor</th><th>Company</th><th>Due</th><th>Amount</th></tr></thead>
+                                <tbody id="cf-out-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- INVENTORY VALUATION SECTION -->
         <h3 class="section-title">💰 Inventory Valuation</h3>
         <div class="row g-3 mb-4">
@@ -147,12 +203,13 @@
             'https://raw.githubusercontent.com/hussainezzi/bismillah-dashboard/main/data.json'
         ];
         for (const url of urls) {
-        try {
-            const resp = await fetch(url);
-            if (!resp.ok) continue;
-            const d = await resp.json();
-            render(d);
-            return;
+            try {
+                const resp = await fetch(url);
+                if (!resp.ok) continue;
+                const d = await resp.json();
+                render(d);
+                return;
+            } catch(e) { continue; }
         }
         document.body.innerHTML = `<div class="container text-center py-5"><h2>⚠️ Could not load dashboard data</h2><p class="text-muted">Check that data.json exists in the repository.</p></div>`;
     }
@@ -163,6 +220,37 @@
         document.getElementById('card-orders').textContent = d.month_orders || 0;
         document.getElementById('card-customers').textContent = d.active_customers || 0;
         document.getElementById('card-runout').textContent = d.critical_stock || 0;
+
+        // Cash Flow
+        const cf = d.cashflow || {};
+        document.getElementById('cf-in').textContent = PKR(cf.total_in_30 || 0);
+        document.getElementById('cf-out').textContent = PKR(cf.total_out_30 || 0);
+        const net = cf.net_30 || 0;
+        const netEl = document.getElementById('cf-net');
+        netEl.textContent = (net >= 0 ? '+' : '') + PKR(Math.abs(net));
+        netEl.style.color = net >= 0 ? '#2e7d32' : '#c62828';
+        document.getElementById('cf-overdue').textContent = (cf.overdue_count || 0) + ' overdue';
+        
+        // Cash In table
+        const cit = document.getElementById('cf-in-tbody');
+        if (cf.cash_in && cf.cash_in.length) {
+            cit.innerHTML = cf.cash_in.map(i => {
+                const badge = i.overdue ? ' <span class="badge badge-critical" style="font-size:.65rem">OVERDUE</span>' : '';
+                return `<tr${i.overdue ? ' style="background:#fff0f0"' : ''}><td>${i.ref}</td><td><strong>${i.customer}</strong>${badge}</td><td>${i.company}</td><td>${i.due_date}</td><td>${PKR(i.amount)}</td></tr>`;
+            }).join('');
+        } else {
+            cit.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-3">✅ No pending customer invoices</td></tr>';
+        }
+        
+        // Cash Out table
+        const cot = document.getElementById('cf-out-tbody');
+        if (cf.cash_out && cf.cash_out.length) {
+            cot.innerHTML = cf.cash_out.map(i => {
+                return `<tr><td>${i.ref}</td><td><strong>${i.vendor}</strong></td><td>${i.company}</td><td>${i.due_date}</td><td>${PKR(i.amount)}</td></tr>`;
+            }).join('');
+        } else {
+            cot.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-3">✅ No pending vendor bills</td></tr>';
+        }
 
         // Inventory summary
         const inv = d.inventory || {};
