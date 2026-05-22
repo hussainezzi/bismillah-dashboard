@@ -1,0 +1,170 @@
+{
+  "generated_at": "2026-05-22 21:43:52",
+  "period": "1-May to 22-May-2026",
+  "month_total": 118629,
+  "month_orders": 15,
+  "active_customers": 4,
+  "critical_stock": 1,
+  "products": [
+    {
+      "name": "[E-COM07] Large Cabinet",
+      "sku": "E-COM07",
+      "qty": 300,
+      "revenue": 96000,
+      "order_count": 0,
+      "pct": 81.2
+    },
+    {
+      "name": "[FURN_6667] Acoustic Bloc Screens (White)",
+      "sku": "FURN_6667",
+      "qty": 36,
+      "revenue": 10420,
+      "order_count": 0,
+      "pct": 8.8
+    },
+    {
+      "name": "Skating Rack",
+      "sku": "",
+      "qty": 4,
+      "revenue": 2600,
+      "order_count": 0,
+      "pct": 2.2
+    },
+    {
+      "name": "[E-COM11] Cabinet with Doors",
+      "sku": "E-COM11",
+      "qty": 15,
+      "revenue": 2100,
+      "order_count": 0,
+      "pct": 1.8
+    },
+    {
+      "name": "[E-COM06] Corner Desk Right Sit",
+      "sku": "E-COM06",
+      "qty": 10,
+      "revenue": 1990,
+      "order_count": 0,
+      "pct": 1.7
+    },
+    {
+      "name": "[FURN_0269] Office Chair Black",
+      "sku": "FURN_0269",
+      "qty": 14,
+      "revenue": 1687,
+      "order_count": 0,
+      "pct": 1.4
+    },
+    {
+      "name": "Virtual Interior Design",
+      "sku": "",
+      "qty": 16,
+      "revenue": 1200,
+      "order_count": 0,
+      "pct": 1.0
+    },
+    {
+      "name": "[FURN_0096] Customizable Desk (Steel, White)",
+      "sku": "FURN_0096",
+      "qty": 1,
+      "revenue": 750,
+      "order_count": 0,
+      "pct": 0.6
+    },
+    {
+      "name": "[FURN_8888] Office Lamp",
+      "sku": "FURN_8888",
+      "qty": 11,
+      "revenue": 490,
+      "order_count": 0,
+      "pct": 0.4
+    },
+    {
+      "name": "[FURN_6741] Large Meeting Table",
+      "sku": "FURN_6741",
+      "qty": 3,
+      "revenue": 450,
+      "order_count": 0,
+      "pct": 0.4
+    },
+    {
+      "name": "[FURN_8855] Drawer",
+      "sku": "FURN_8855",
+      "qty": 2,
+      "revenue": 221,
+      "order_count": 0,
+      "pct": 0.2
+    },
+    {
+      "name": "[FURN_8999] Three-Seat Sofa",
+      "sku": "FURN_8999",
+      "qty": 1,
+      "revenue": 173,
+      "order_count": 0,
+      "pct": 0.1
+    },
+    {
+      "name": "[FURN_7777] Office Chair",
+      "sku": "FURN_7777",
+      "qty": 3,
+      "revenue": 158,
+      "order_count": 0,
+      "pct": 0.1
+    }
+  ],
+  "customers": [
+    {
+      "name": "Ai with Ezzi",
+      "count": 1,
+      "total": 96000,
+      "pct": 80.9,
+      "last_order": "2026-05-06"
+    },
+    {
+      "name": "Gemini Furniture",
+      "count": 12,
+      "total": 18889,
+      "pct": 15.9,
+      "last_order": "2026-05-06"
+    },
+    {
+      "name": "Huzefa Bhai Ali Bhai",
+      "count": 1,
+      "total": 2990,
+      "pct": 2.5,
+      "last_order": "2026-05-17"
+    },
+    {
+      "name": "Lumber Inc",
+      "count": 1,
+      "total": 750,
+      "pct": 0.6,
+      "last_order": "2026-05-06"
+    }
+  ],
+  "stock_alerts": [
+    {
+      "name": "Acoustic Bloc Screens",
+      "sku": "FURN_6667",
+      "stock": 16,
+      "sold": 36,
+      "daily": 1.64,
+      "days_left": 9.8
+    },
+    {
+      "name": "Office Chair Black",
+      "sku": "FURN_0269",
+      "stock": 10,
+      "sold": 14,
+      "daily": 0.64,
+      "days_left": 15.7
+    },
+    {
+      "name": "Large Cabinet",
+      "sku": "E-COM07",
+      "stock": 230,
+      "sold": 300,
+      "daily": 13.64,
+      "days_left": 16.9
+    }
+  ]
+}
