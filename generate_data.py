@@ -18,6 +18,60 @@ def connect():
     models = xmlrpc.client.ServerProxy(f'{URL}/xmlrpc/2/object')
     return uid, models
 
+def get_inventory_valuation(uid, models):
+    """Get total inventory value and breakdown by product/category."""
+    products = models.execute_kw(DB, uid, PASS, 'product.product', 'search_read',
+        [[['qty_available', '>', 0]]],
+        {'fields': ['id', 'name', 'default_code', 'qty_available', 'standard_price', 'categ_id']})
+    
+    total_value = 0
+    by_category = defaultdict(lambda: {'qty': 0, 'value': 0, 'items': 0})
+    cat_names = {}
+    items = []
+    
+    for p in products:
+        qty = p['qty_available'] or 0
+        cost = p['standard_price'] or 0
+        value = qty * cost
+        total_value += value
+        
+        cat_id = p['categ_id'][0] if p.get('categ_id') else 0
+        cat_name = p['categ_id'][1] if p.get('categ_id') else 'Uncategorized'
+        cat_names[cat_id] = cat_name
+        by_category[cat_id]['qty'] += qty
+        by_category[cat_id]['value'] += value
+        by_category[cat_id]['items'] += 1
+        
+        items.append({
+            'name': p['name'],
+            'sku': p.get('default_code', '') or '',
+            'qty': round(qty),
+            'cost': round(cost),
+            'value': round(value)
+        })
+    
+    items.sort(key=lambda x: x['value'], reverse=True)
+    
+    categories = []
+    for cat_id, data in sorted(by_category.items(), key=lambda x: x[1]['value'], reverse=True):
+        categories.append({
+            'name': cat_names.get(cat_id, f'ID {cat_id}'),
+            'items': data['items'],
+            'qty': round(data['qty']),
+            'value': round(data['value']),
+            'pct': round(data['value'] / total_value * 100, 1) if total_value else 0
+        })
+    
+    return {
+        'total_value': round(total_value),
+        'total_items': len(items),
+        'total_units': sum(i['qty'] for i in items),
+        'top_product': items[0] if items else None,
+        'products': items,
+        'categories': categories
+    }
+
+
 def main():
     uid, models = connect()
     today = date.today()
@@ -142,6 +196,9 @@ def main():
             })
         return result
 
+    # ── Inventory Valuation ──
+    inventory = get_inventory_valuation(uid, models)
+
     output = {
         'generated_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'period': f'1-{first_of_month.strftime("%b")} to {today.strftime("%d-%b-%Y")}',
@@ -151,12 +208,13 @@ def main():
         'critical_stock': critical_count,
         'products': fmt_products(),
         'customers': fmt_customers(),
-        'stock_alerts': stock_alerts
+        'stock_alerts': stock_alerts,
+        'inventory': inventory
     }
 
     with open('data.json', 'w') as f:
         json.dump(output, f, indent=2)
-    print(f'✅ data.json generated — {month_orders} orders, {active_customers} customers, {critical_count} low-stock items')
+    print(f'✅ data.json generated — {month_orders} orders, {active_customers} customers, {critical_count} low-stock items, Rs. {inventory["total_value"]:,} inventory value')
 
 if __name__ == '__main__':
     main()

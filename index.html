@@ -7,28 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root {
-            --primary: #1a237e;
-            --accent: #ff6f00;
-            --bg: #f5f5f5;
-        }
+        :root { --primary: #1a237e; --accent: #ff6f00; --bg: #f5f5f5; }
         body { background: var(--bg); font-family: 'Segoe UI', system-ui, sans-serif; }
-        .header {
-            background: linear-gradient(135deg, var(--primary), #283593);
-            color: white;
-            padding: 1.5rem 0;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,.15);
-        }
+        .header { background: linear-gradient(135deg, var(--primary), #283593); color: white; padding: 1.5rem 0; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
         .header h1 { margin: 0; font-weight: 600; }
         .header .subtitle { opacity: .85; font-size: .95rem; }
-        .stat-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.25rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,.08);
-            transition: transform .15s;
-        }
+        .stat-card { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 1px 4px rgba(0,0,0,.08); transition: transform .15s; }
         .stat-card:hover { transform: translateY(-2px); }
         .stat-card .number { font-size: 1.75rem; font-weight: 700; color: var(--primary); }
         .stat-card .label { color: #666; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; }
@@ -42,6 +26,8 @@
         .card-header { border-radius: 12px 12px 0 0 !important; font-weight: 600; background: #fff; border-bottom: 2px solid var(--primary); }
         .last-refresh { font-size: .8rem; color: #999; text-align: center; padding: 1rem; }
         .section-title { font-weight: 600; margin: 2rem 0 1rem; color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: .5rem; }
+        .stat-card.inv { background: linear-gradient(135deg, #e8eaf6, #fff); border-left: 4px solid var(--accent); }
+        .stat-card.inv .number { color: var(--accent); }
     </style>
 </head>
 <body>
@@ -52,7 +38,7 @@
 
     <div class="container">
         <!-- Summary Cards -->
-        <div id="stats-row" class="row g-3 mb-4">
+        <div class="row g-3 mb-4">
             <div class="col-md-3 col-6"><div class="stat-card text-center"><div class="number" id="card-sales">—</div><div class="label">This Month Sales</div></div></div>
             <div class="col-md-3 col-6"><div class="stat-card text-center"><div class="number" id="card-orders">—</div><div class="label">Orders</div></div></div>
             <div class="col-md-3 col-6"><div class="stat-card text-center"><div class="number" id="card-customers">—</div><div class="label">Active Customers</div></div></div>
@@ -82,6 +68,40 @@
                         <thead><tr><th>Product</th><th>SKU</th><th>In Stock</th><th>Sold This Month</th><th>Daily Rate</th><th>Est. Days Left</th><th>Status</th></tr></thead>
                         <tbody id="stock-tbody"><tr><td colspan="7" class="text-center text-muted py-3">Loading...</td></tr></tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- INVENTORY VALUATION SECTION -->
+        <h3 class="section-title">💰 Inventory Valuation</h3>
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="stat-card inv text-center"><div class="number" id="inv-total-value">—</div><div class="label">Total Inventory Value</div></div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card inv text-center"><div class="number" id="inv-total-units">—</div><div class="label">Total Units</div></div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card inv text-center"><div class="number" id="inv-top-value">—</div><div class="label">Top Product Value</div></div>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-5">
+                <div class="card"><div class="card-header">Capital by Product</div>
+                    <div class="card-body"><canvas id="chart-inv-products" height="240"></canvas></div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="card"><div class="card-header">All Stock Items</div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive" style="max-height:320px; overflow-y:auto">
+                            <table class="table table-hover mb-0">
+                                <thead><tr><th>Product</th><th>SKU</th><th>Qty</th><th>Cost/Unit</th><th>Total Value</th><th>%</th></tr></thead>
+                                <tbody id="inv-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,20 +138,17 @@
     <script>
     const PKR = n => 'Rs. ' + Number(n).toLocaleString('en-IN', {maximumFractionDigits: 0});
 
+    const COLORS = ['#1a237e','#283593','#3949ab','#5c6bc0','#7986cb','#9fa8da','#c5cae9','#e8eaf6','#ff6f00','#f57c00','#fbc02d','#388e3c','#d32f2f','#ad1457','#6a1b9a','#00695c'];
+
     async function loadData() {
+        const url = 'https://raw.githubusercontent.com/hussainezzi/bismillah-dashboard/main/data.json';
         try {
-            const resp = await fetch('https://raw.githubusercontent.com/kitchendunya/bismillah-dashboard/main/data.json');
+            const resp = await fetch(url);
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
             const d = await resp.json();
             render(d);
         } catch(e) {
-            // Fallback: try gh-pages branch
-            try {
-                const resp = await fetch('https://raw.githubusercontent.com/kitchendunya/bismillah-dashboard/gh-pages/data.json');
-                const d = await resp.json();
-                render(d);
-            } catch(e2) {
-                document.body.innerHTML = `<div class="container text-center py-5"><h2>⚠️ Could not load dashboard data</h2><p class="text-muted">${e2.message}</p></div>`;
-            }
+            document.body.innerHTML = `<div class="container text-center py-5"><h2>⚠️ Could not load dashboard data</h2><p class="text-muted">${e.message}</p></div>`;
         }
     }
 
@@ -142,41 +159,65 @@
         document.getElementById('card-customers').textContent = d.active_customers || 0;
         document.getElementById('card-runout').textContent = d.critical_stock || 0;
 
-        // Product chart
+        // Inventory summary
+        const inv = d.inventory || {};
+        document.getElementById('inv-total-value').textContent = PKR(inv.total_value || 0);
+        document.getElementById('inv-total-units').textContent = (inv.total_units || 0) + ' units';
+        const top = inv.top_product || {};
+        document.getElementById('inv-top-value').textContent = top.name ? PKR(top.value) : '—';
+        document.getElementById('inv-top-value').title = top.name || '';
+
+        // Product chart (sales)
         if (d.products && d.products.length) {
-            const top = d.products.slice(0, 8);
             new Chart(document.getElementById('chart-products'), {
                 type: 'doughnut',
                 data: {
-                    labels: top.map(p => p.name),
-                    datasets: [{
-                        data: top.map(p => p.revenue),
-                        backgroundColor: ['#1a237e','#283593','#3949ab','#5c6bc0','#7986cb','#9fa8da','#c5cae9','#e8eaf6']
-                    }]
+                    labels: d.products.slice(0, 8).map(p => p.name),
+                    datasets: [{ data: d.products.slice(0, 8).map(p => p.revenue), backgroundColor: COLORS }]
                 },
-                options: { plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: {size: 11} } } } }
+                options: { plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: {size: 10} } } } }
             });
         }
 
         // Customer chart
         if (d.customers && d.customers.length) {
-            const top = d.customers.slice(0, 6);
             new Chart(document.getElementById('chart-customers'), {
                 type: 'bar',
                 data: {
-                    labels: top.map(c => c.name),
-                    datasets: [{
-                        label: 'Revenue',
-                        data: top.map(c => c.total),
-                        backgroundColor: '#ff6f00'
-                    }]
+                    labels: d.customers.slice(0, 6).map(c => c.name),
+                    datasets: [{ label: 'Revenue', data: d.customers.slice(0, 6).map(c => c.total), backgroundColor: '#ff6f00' }]
                 },
-                options: {
-                    indexAxis: 'y',
-                    plugins: { legend: { display: false } },
-                    scales: { x: { ticks: { callback: v => PKR(v) } } }
-                }
+                options: { indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { ticks: { callback: v => PKR(v) } } } }
             });
+        }
+
+        // Inventory product chart
+        if (inv.products && inv.products.length) {
+            const topInv = inv.products.slice(0, 10);
+            new Chart(document.getElementById('chart-inv-products'), {
+                type: 'doughnut',
+                data: {
+                    labels: topInv.map(p => p.name + ' (' + p.qty + 'u)'),
+                    datasets: [{ data: topInv.map(p => p.value), backgroundColor: COLORS }]
+                },
+                options: { plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: {size: 9} } } } }
+            });
+        }
+
+        // Inventory table
+        const it = document.getElementById('inv-tbody');
+        if (inv.products && inv.products.length) {
+            it.innerHTML = inv.products.map(p => {
+                const pct = inv.total_value ? (p.value / inv.total_value * 100).toFixed(1) : 0;
+                return `<tr>
+                    <td><strong>${p.name}</strong></td><td>${p.sku || '—'}</td>
+                    <td>${p.qty}</td><td>${PKR(p.cost)}</td>
+                    <td><strong>${PKR(p.value)}</strong></td>
+                    <td><div class="progress" style="height:6px"><div class="progress-bar" style="width:${Math.min(pct,100)}%;background:var(--primary)"></div></div> ${pct}%</td>
+                </tr>`;
+            }).join('');
+        } else {
+            it.innerHTML = '<tr><td colspan="6" class="text-center text-muted py-3">No inventory data</td></tr>';
         }
 
         // Stock table
@@ -187,13 +228,7 @@
                 if (s.days_left <= 3) { badge = 'badge-critical'; status = '🔴 Critical'; }
                 else if (s.days_left <= 7) { badge = 'badge-warning'; status = '🟡 Warning'; }
                 else { badge = 'badge-low'; status = '🔶 Low'; }
-                return `<tr>
-                    <td>${s.name}</td><td>${s.sku || '—'}</td>
-                    <td><strong>${s.stock}</strong></td><td>${s.sold}</td>
-                    <td>${s.daily.toFixed(1)}/day</td>
-                    <td><strong>${Math.round(s.days_left)} days</strong></td>
-                    <td><span class="badge ${badge}">${status}</span></td>
-                </tr>`;
+                return `<tr><td>${s.name}</td><td>${s.sku || '—'}</td><td><strong>${s.stock}</strong></td><td>${s.sold}</td><td>${s.daily.toFixed(1)}/day</td><td><strong>${Math.round(s.days_left)} days</strong></td><td><span class="badge ${badge}">${status}</span></td></tr>`;
             }).join('');
         } else {
             st.innerHTML = '<tr><td colspan="7" class="text-center text-muted py-3">✅ No products at risk in the next 14 days</td></tr>';
@@ -202,24 +237,15 @@
         // Customer table
         const ct = document.getElementById('customer-tbody');
         if (d.customers && d.customers.length) {
-            ct.innerHTML = d.customers.map(c => `<tr>
-                <td><strong>${c.name}</strong></td><td>${c.count}</td>
-                <td>${PKR(c.total)}</td>
-                <td>${c.pct.toFixed(1)}%</td>
-                <td>${c.last_order || '—'}</td>
-            </tr>`).join('');
+            ct.innerHTML = d.customers.map(c => `<tr><td><strong>${c.name}</strong></td><td>${c.count}</td><td>${PKR(c.total)}</td><td>${c.pct.toFixed(1)}%</td><td>${c.last_order || '—'}</td></tr>`).join('');
         } else {
             ct.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-3">No data</td></tr>';
         }
 
-        // Product table
+        // Product detail table
         const pt = document.getElementById('product-tbody');
         if (d.products && d.products.length) {
-            pt.innerHTML = d.products.map(p => `<tr>
-                <td><strong>${p.name}</strong></td><td>${p.sku || '—'}</td>
-                <td>${p.qty}</td><td>${PKR(p.revenue)}</td>
-                <td>${p.order_count}</td><td>${p.pct.toFixed(1)}%</td>
-            </tr>`).join('');
+            pt.innerHTML = d.products.map(p => `<tr><td><strong>${p.name}</strong></td><td>${p.sku || '—'}</td><td>${p.qty}</td><td>${PKR(p.revenue)}</td><td>${p.order_count}</td><td>${p.pct.toFixed(1)}%</td></tr>`).join('');
         } else {
             pt.innerHTML = '<tr><td colspan="6" class="text-center text-muted py-3">No data</td></tr>';
         }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-22 21:43:52",
+  "generated_at": "2026-05-22 21:51:16",
   "period": "1-May to 22-May-2026",
   "month_total": 118629,
   "month_orders": 15,
@@ -166,5 +166,210 @@
       "daily": 13.64,
       "days_left": 16.9
     }
-  ]
+  ],
+  "inventory": {
+    "total_value": 359360,
+    "total_items": 26,
+    "total_units": 1267,
+    "top_product": {
+      "name": "Large Cabinet",
+      "sku": "E-COM07",
+      "qty": 230,
+      "cost": 800,
+      "value": 184000
+    },
+    "products": [
+      {
+        "name": "Large Cabinet",
+        "sku": "E-COM07",
+        "qty": 230,
+        "cost": 800,
+        "value": 184000
+      },
+      {
+        "name": "Table Kit",
+        "sku": "FURN_78236",
+        "qty": 50,
+        "cost": 600,
+        "value": 30000
+      },
+      {
+        "name": "Customizable Desk",
+        "sku": "FURN_0098",
+        "qty": 55,
+        "cost": 500,
+        "value": 27500
+      },
+      {
+        "name": "Customizable Desk",
+        "sku": "FURN_0097",
+        "qty": 50,
+        "cost": 500,
+        "value": 25000
+      },
+      {
+        "name": "Customizable Desk",
+        "sku": "FURN_0096",
+        "qty": 45,
+        "cost": 500,
+        "value": 22500
+      },
+      {
+        "name": "Drawer",
+        "sku": "FURN_8855",
+        "qty": 183,
+        "cost": 100,
+        "value": 18300
+      },
+      {
+        "name": "Desk Combination",
+        "sku": "FURN_7800",
+        "qty": 60,
+        "cost": 300,
+        "value": 18000
+      },
+      {
+        "name": "Individual Workplace",
+        "sku": "FURN_0789",
+        "qty": 16,
+        "cost": 876,
+        "value": 14016
+      },
+      {
+        "name": "Cable Management Box",
+        "sku": "FURN_5555",
+        "qty": 90,
+        "cost": 70,
+        "value": 6300
+      },
+      {
+        "name": "Wood Panel",
+        "sku": "FURN_7023",
+        "qty": 50,
+        "cost": 80,
+        "value": 4000
+      },
+      {
+        "name": "Cabinet with Doors",
+        "sku": "E-COM11",
+        "qty": 33,
+        "cost": 120,
+        "value": 3976
+      },
+      {
+        "name": "Office Chair Black",
+        "sku": "FURN_0269",
+        "qty": 10,
+        "cost": 180,
+        "value": 1800
+      },
+      {
+        "name": "Table Top",
+        "sku": "FURN_8522",
+        "qty": 5,
+        "cost": 240,
+        "value": 1200
+      },
+      {
+        "name": "Drawer Black",
+        "sku": "FURN_2100",
+        "qty": 45,
+        "cost": 20,
+        "value": 900
+      },
+      {
+        "name": "Drawer Case Black",
+        "sku": "FURN_5623",
+        "qty": 45,
+        "cost": 10,
+        "value": 450
+      },
+      {
+        "name": "Wear Layer",
+        "sku": "FURN_8111",
+        "qty": 30,
+        "cost": 10,
+        "value": 300
+      },
+      {
+        "name": "Table",
+        "sku": "FURN_9666",
+        "qty": 1,
+        "cost": 290,
+        "value": 290
+      },
+      {
+        "name": "Storage Box",
+        "sku": "E-COM08",
+        "qty": 18,
+        "cost": 14,
+        "value": 252
+      },
+      {
+        "name": "Pedal Bin",
+        "sku": "E-COM10",
+        "qty": 22,
+        "cost": 10,
+        "value": 220
+      },
+      {
+        "name": "Ply Layer",
+        "sku": "FURN_7111",
+        "qty": 20,
+        "cost": 10,
+        "value": 200
+      },
+      {
+        "name": "Corner Desk Left Sit",
+        "sku": "FURN_1118",
+        "qty": 2,
+        "cost": 78,
+        "value": 156
+      },
+      {
+        "name": "Customizable Desk",
+        "sku": "DESK0005",
+        "qty": 65,
+        "cost": 0,
+        "value": 0
+      },
+      {
+        "name": "Customizable Desk",
+        "sku": "DESK0006",
+        "qty": 70,
+        "cost": 0,
+        "value": 0
+      },
+      {
+        "name": "Conference Chair",
+        "sku": "E-COM12",
+        "qty": 26,
+        "cost": 0,
+        "value": 0
+      },
+      {
+        "name": "Conference Chair",
+        "sku": "E-COM13",
+        "qty": 30,
+        "cost": 0,
+        "value": 0
+      },
+      {
+        "name": "Acoustic Bloc Screens",
+        "sku": "FURN_6667",
+        "qty": 16,
+        "cost": 0,
+        "value": 0
+      }
+    ],
+    "categories": [
+      {
+        "name": "All / Saleable / Office Furniture",
+        "items": 26,
+        "qty": 1267,
+        "value": 359360,
+        "pct": 100.0
+      }
+    ]
+  }
 }
