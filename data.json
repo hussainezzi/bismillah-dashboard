@@ -1,0 +1,435 @@
+{
+  "company": "Bismillah Traders",
+  "period": {
+    "from": "2025-12-01",
+    "to": "2026-05-23"
+  },
+  "summary": {
+    "total_income": 1017602.0,
+    "total_expenses": 16000.0,
+    "net_profit": 1001602.0
+  },
+  "income": [
+    {
+      "code": "3111001",
+      "name": "Sales Income",
+      "total": 1017602.0,
+      "details": [
+        {
+          "date": "2026-05-23",
+          "partner": "Burhanuddin Tamba",
+          "amt": 45000.0
+        },
+        {
+          "date": "2026-05-11",
+          "partner": "Anthony",
+          "amt": 50000.0
+        },
+        {
+          "date": "2026-05-11",
+          "partner": "Anthony",
+          "amt": 9000.0
+        },
+        {
+          "date": "2026-05-10",
+          "partner": "Mr A",
+          "amt": 900000.0
+        },
+        {
+          "date": "2026-05-09",
+          "partner": "Hozefa",
+          "amt": 2000.0
+        },
+        {
+          "date": "2026-05-07",
+          "partner": "Hozefa",
+          "amt": 202.0
+        },
+        {
+          "date": "2026-05-05",
+          "partner": "Acme Corporation",
+          "amt": -11750.0
+        },
+        {
+          "date": "2026-05-05",
+          "partner": "Acme Corporation",
+          "amt": -30000.0
+        },
+        {
+          "date": "2026-05-05",
+          "partner": "Punjab Customer",
+          "amt": -80000.0
+        },
+        {
+          "date": "2026-05-05",
+          "partner": "Punjab Customer",
+          "amt": -1200.0
+        },
+        {
+          "date": "2026-05-05",
+          "partner": "Punjab Customer",
+          "amt": -1200.0
+        },
+        {
+          "date": "2026-05-05",
+          "partner": "Punjab Customer",
+          "amt": 80000.0
+        },
+        {
+          "date": "2026-05-05",
+          "partner": "Punjab Customer",
+          "amt": 1200.0
+        },
+        {
+          "date": "2026-05-05",
+          "partner": "Punjab Customer",
+          "amt": 1200.0
+        },
+        {
+          "date": "2026-05-04",
+          "partner": "Acme Corporation",
+          "amt": -7500.0
+        },
+        {
+          "date": "2026-05-04",
+          "partner": "Acme Corporation",
+          "amt": -11750.0
+        },
+        {
+          "date": "2026-05-04",
+          "partner": "Gemini Furniture",
+          "amt": -8000.0
+        },
+        {
+          "date": "2026-05-04",
+          "partner": "Acme Corporation",
+          "amt": 11750.0
+        },
+        {
+          "date": "2026-05-04",
+          "partner": "Acme Corporation",
+          "amt": 30000.0
+        },
+        {
+          "date": "2026-05-04",
+          "partner": "Punjab Customer",
+          "amt": 8000.0
+        },
+        {
+          "date": "2026-05-04",
+          "partner": "Punjab Customer",
+          "amt": 900.0
+        },
+        {
+          "date": "2026-05-03",
+          "partner": "Acme Corporation",
+          "amt": 7500.0
+        },
+        {
+          "date": "2026-05-03",
+          "partner": "Acme Corporation",
+          "amt": 11750.0
+        },
+        {
+          "date": "2026-05-03",
+          "partner": "Gemini Furniture",
+          "amt": 8000.0
+        },
+        {
+          "date": "2026-05-01",
+          "partner": "Azure Interior",
+          "amt": 20000.0
+        },
+        {
+          "date": "2026-05-01",
+          "partner": "Azure Interior",
+          "amt": 11750.0
+        },
+        {
+          "date": "2026-04-26",
+          "partner": "Acme Corporation",
+          "amt": -20000.0
+        },
+        {
+          "date": "2026-04-26",
+          "partner": "Acme Corporation",
+          "amt": -11750.0
+        },
+        {
+          "date": "2026-04-21",
+          "partner": "Acme Corporation",
+          "amt": 20000.0
+        },
+        {
+          "date": "2026-04-21",
+          "partner": "Acme Corporation",
+          "amt": 11750.0
+        },
+        {
+          "date": "2026-04-16",
+          "partner": "Acme Corporation",
+          "amt": 2500.0
+        },
+        {
+          "date": "2026-04-03",
+          "partner": "Azure Interior",
+          "amt": -20000.0
+        },
+        {
+          "date": "2026-04-02",
+          "partner": "Azure Interior",
+          "amt": -11750.0
+        }
+      ]
+    }
+  ],
+  "expenses": [
+    {
+      "code": "4111001",
+      "name": "Purchases",
+      "total": 16000.0,
+      "details": [
+        {
+          "date": "2026-05-06",
+          "partner": "Azure Interior",
+          "amt": -10.0
+        },
+        {
+          "date": "2026-05-06",
+          "partner": "Azure Interior",
+          "amt": -20.0
+        },
+        {
+          "date": "2026-05-06",
+          "partner": "Azure Interior",
+          "amt": 10.0
+        },
+        {
+          "date": "2026-05-06",
+          "partner": "Azure Interior",
+          "amt": 20.0
+        },
+        {
+          "date": "2026-05-06",
+          "partner": "Islamabad Vendor",
+          "amt": 1000.0
+        },
+        {
+          "date": "2026-05-06",
+          "partner": "Islamabad Vendor",
+          "amt": 2000.0
+        },
+        {
+          "date": "2026-05-06",
+          "partner": "Islamabad Vendor",
+          "amt": 4000.0
+        },
+        {
+          "date": "2026-05-06",
+          "partner": "Islamabad Vendor",
+          "amt": 6000.0
+        },
+        {
+          "date": "2026-05-06",
+          "partner": "Islamabad Vendor",
+          "amt": 1000.0
+        },
+        {
+          "date": "2026-05-06",
+          "partner": "Islamabad Vendor",
+          "amt": 2000.0
+        }
+      ]
+    }
+  ],
+  "receivables": {
+    "total": 1176367.0,
+    "items": [
+      {
+        "partner": "Burhanuddin Tamba",
+        "balance": 52650.0,
+        "date": "2026-05-23",
+        "invoice": "INV/2026/00012"
+      },
+      {
+        "partner": "Anthony",
+        "balance": 59000.0,
+        "date": "2026-05-11",
+        "invoice": "INV/2026/00011"
+      },
+      {
+        "partner": "Mr A",
+        "balance": 1053000.0,
+        "date": "2026-05-10",
+        "invoice": "INV/2026/00010"
+      },
+      {
+        "partner": "Hozefa",
+        "balance": 2340.0,
+        "date": "2026-05-09",
+        "invoice": "INV/2026/00009"
+      },
+      {
+        "partner": "Hozefa",
+        "balance": -500.0,
+        "date": "2026-05-07",
+        "invoice": "Manual Payment: Cash receipt Rs. 500 - Rs. 236.34 for INV/2026/00008, Rs. 263.66 advance"
+      },
+      {
+        "partner": "Acme Corporation",
+        "balance": -41750.0,
+        "date": "2026-05-05",
+        "invoice": false
+      },
+      {
+        "partner": "Punjab Customer",
+        "balance": -90520.0,
+        "date": "2026-05-05",
+        "invoice": false
+      },
+      {
+        "partner": "Punjab Customer",
+        "balance": 90652.0,
+        "date": "2026-05-05",
+        "invoice": "INV/2026/00001"
+      },
+      {
+        "partner": "Acme Corporation",
+        "balance": -19250.0,
+        "date": "2026-05-04",
+        "invoice": false
+      },
+      {
+        "partner": "Gemini Furniture",
+        "balance": -8000.0,
+        "date": "2026-05-04",
+        "invoice": false
+      },
+      {
+        "partner": "Acme Corporation",
+        "balance": 41750.0,
+        "date": "2026-05-04",
+        "invoice": "INV/2026/00005"
+      },
+      {
+        "partner": "Punjab Customer",
+        "balance": 9745.0,
+        "date": "2026-05-04",
+        "invoice": "INV/2026/00002"
+      },
+      {
+        "partner": "Acme Corporation",
+        "balance": 19250.0,
+        "date": "2026-05-03",
+        "invoice": "INV/2026/00006"
+      },
+      {
+        "partner": "Gemini Furniture",
+        "balance": 8000.0,
+        "date": "2026-05-03",
+        "invoice": "INV/2026/00003"
+      },
+      {
+        "partner": "Azure Interior",
+        "balance": 31750.0,
+        "date": "2026-05-01",
+        "invoice": "INV/2026/00004"
+      },
+      {
+        "partner": "Acme Corporation",
+        "balance": -31750.0,
+        "date": "2026-04-26",
+        "invoice": false
+      },
+      {
+        "partner": "Acme Corporation",
+        "balance": 31750.0,
+        "date": "2026-04-21",
+        "invoice": "INV/2026/00007"
+      },
+      {
+        "partner": "Acme Corporation",
+        "balance": 2500.0,
+        "date": "2026-04-16",
+        "invoice": false
+      },
+      {
+        "partner": "Acme Corporation",
+        "balance": -2500.0,
+        "date": "2026-04-16",
+        "invoice": false
+      },
+      {
+        "partner": "Azure Interior",
+        "balance": -20000.0,
+        "date": "2026-04-03",
+        "invoice": false
+      },
+      {
+        "partner": "Azure Interior",
+        "balance": -11750.0,
+        "date": "2026-04-02",
+        "invoice": false
+      }
+    ]
+  },
+  "payables": {
+    "total": -17880.0,
+    "items": [
+      {
+        "account": "2221001",
+        "partner": "Azure Interior",
+        "balance": 30.0,
+        "date": "2026-05-06",
+        "ref": false
+      },
+      {
+        "account": "2221001",
+        "partner": "Azure Interior",
+        "balance": -30.0,
+        "date": "2026-05-06",
+        "ref": false
+      },
+      {
+        "account": "2221001",
+        "partner": "Islamabad Vendor",
+        "balance": -3270.0,
+        "date": "2026-05-06",
+        "ref": "INV/003"
+      },
+      {
+        "account": "2221001",
+        "partner": "Islamabad Vendor",
+        "balance": -11280.0,
+        "date": "2026-05-06",
+        "ref": "INV/002"
+      },
+      {
+        "account": "2221001",
+        "partner": "Islamabad Vendor",
+        "balance": -3330.0,
+        "date": "2026-05-06",
+        "ref": "INV/001"
+      },
+      {
+        "account": "2221001",
+        "partner": "Azure Interior",
+        "balance": 633.09,
+        "date": "2025-02-28",
+        "ref": false
+      },
+      {
+        "account": "2221001",
+        "partner": "Azure Interior",
+        "balance": -633.09,
+        "date": "2025-02-28",
+        "ref": "INV/2025/0057"
+      }
+    ]
+  },
+  "monthly_income": {
+    "2026-05": 1349652.0,
+    "2026-04": 97750.0
+  },
+  "generated_at": "2026-05-23 20:53"
+}
