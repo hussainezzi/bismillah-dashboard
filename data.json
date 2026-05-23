@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-23 11:00:20",
+  "generated_at": "2026-05-23 21:00:18",
   "period": "1-May to 23-May-2026",
-  "month_total": 118629,
-  "month_orders": 15,
-  "active_customers": 4,
+  "month_total": 171279,
+  "month_orders": 16,
+  "active_customers": 5,
   "critical_stock": 1,
   "products": [
     {
@@ -12,7 +12,15 @@
       "qty": 300,
       "revenue": 96000,
       "order_count": 0,
-      "pct": 81.2
+      "pct": 58.8
+    },
+    {
+      "name": "Paghri",
+      "sku": "",
+      "qty": 5,
+      "revenue": 45000,
+      "order_count": 0,
+      "pct": 27.6
     },
     {
       "name": "[FURN_6667] Acoustic Bloc Screens (White)",
@@ -20,7 +28,7 @@
       "qty": 36,
       "revenue": 10420,
       "order_count": 0,
-      "pct": 8.8
+      "pct": 6.4
     },
     {
       "name": "Skating Rack",
@@ -28,7 +36,7 @@
       "qty": 4,
       "revenue": 2600,
       "order_count": 0,
-      "pct": 2.2
+      "pct": 1.6
     },
     {
       "name": "[E-COM11] Cabinet with Doors",
@@ -36,7 +44,7 @@
       "qty": 15,
       "revenue": 2100,
       "order_count": 0,
-      "pct": 1.8
+      "pct": 1.3
     },
     {
       "name": "[E-COM06] Corner Desk Right Sit",
@@ -44,7 +52,7 @@
       "qty": 10,
       "revenue": 1990,
       "order_count": 0,
-      "pct": 1.7
+      "pct": 1.2
     },
     {
       "name": "[FURN_0269] Office Chair Black",
@@ -52,7 +60,7 @@
       "qty": 14,
       "revenue": 1687,
       "order_count": 0,
-      "pct": 1.4
+      "pct": 1.0
     },
     {
       "name": "Virtual Interior Design",
@@ -60,7 +68,7 @@
       "qty": 16,
       "revenue": 1200,
       "order_count": 0,
-      "pct": 1.0
+      "pct": 0.7
     },
     {
       "name": "[FURN_0096] Customizable Desk (Steel, White)",
@@ -68,7 +76,7 @@
       "qty": 1,
       "revenue": 750,
       "order_count": 0,
-      "pct": 0.6
+      "pct": 0.5
     },
     {
       "name": "[FURN_8888] Office Lamp",
@@ -76,7 +84,7 @@
       "qty": 11,
       "revenue": 490,
       "order_count": 0,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "[FURN_6741] Large Meeting Table",
@@ -84,7 +92,7 @@
       "qty": 3,
       "revenue": 450,
       "order_count": 0,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "[FURN_8855] Drawer",
@@ -92,7 +100,7 @@
       "qty": 2,
       "revenue": 221,
       "order_count": 0,
-      "pct": 0.2
+      "pct": 0.1
     },
     {
       "name": "[FURN_8999] Three-Seat Sofa",
@@ -116,28 +124,35 @@
       "name": "Ai with Ezzi",
       "count": 1,
       "total": 96000,
-      "pct": 80.9,
+      "pct": 56.0,
       "last_order": "2026-05-06"
+    },
+    {
+      "name": "Burhanuddin Tamba",
+      "count": 1,
+      "total": 52650,
+      "pct": 30.7,
+      "last_order": "2026-05-23"
     },
     {
       "name": "Gemini Furniture",
       "count": 12,
       "total": 18889,
-      "pct": 15.9,
+      "pct": 11.0,
       "last_order": "2026-05-06"
     },
     {
       "name": "Huzefa Bhai Ali Bhai",
       "count": 1,
       "total": 2990,
-      "pct": 2.5,
+      "pct": 1.7,
       "last_order": "2026-05-17"
     },
     {
       "name": "Lumber Inc",
       "count": 1,
       "total": 750,
-      "pct": 0.6,
+      "pct": 0.4,
       "last_order": "2026-05-06"
     }
   ],
@@ -375,10 +390,10 @@
   "cashflow": {
     "forecast_date": "23-May-2026",
     "forecast_until": "22-Jun-2026",
-    "total_in_30": 1389230,
+    "total_in_30": 1441880,
     "total_out_30": 1255,
-    "net_30": 1387975,
-    "total_receivable": 1561127,
+    "net_30": 1440625,
+    "total_receivable": 1613777,
     "total_payable": 19195,
     "overdue_count": 11,
     "cash_in": [
@@ -469,6 +484,14 @@
         "due_date": "2026-05-17",
         "amount": 2990,
         "overdue": true
+      },
+      {
+        "ref": "INV/2026/00012",
+        "customer": "Burhanuddin Tamba",
+        "company": "Bismillah Traders",
+        "due_date": "2026-05-23",
+        "amount": 52650,
+        "overdue": false
       }
     ],
     "cash_out": [
