@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-24 21:00:18",
-  "period": "1-May to 24-May-2026",
+  "generated_at": "2026-05-25 11:00:20",
+  "period": "1-May to 25-May-2026",
   "month_total": 171279,
   "month_orders": 16,
   "active_customers": 5,
@@ -162,24 +162,24 @@
       "sku": "FURN_6667",
       "stock": 16,
       "sold": 36,
-      "daily": 1.5,
-      "days_left": 10.7
+      "daily": 1.44,
+      "days_left": 11.1
     },
     {
       "name": "Office Chair Black",
       "sku": "FURN_0269",
       "stock": 10,
       "sold": 14,
-      "daily": 0.58,
-      "days_left": 17.1
+      "daily": 0.56,
+      "days_left": 17.9
     },
     {
       "name": "Large Cabinet",
       "sku": "E-COM07",
       "stock": 230,
       "sold": 300,
-      "daily": 12.5,
-      "days_left": 18.4
+      "daily": 12.0,
+      "days_left": 19.2
     }
   ],
   "inventory": {
@@ -388,8 +388,8 @@
     ]
   },
   "cashflow": {
-    "forecast_date": "24-May-2026",
-    "forecast_until": "23-Jun-2026",
+    "forecast_date": "25-May-2026",
+    "forecast_until": "24-Jun-2026",
     "total_in_30": 1441880,
     "total_out_30": 1255,
     "net_30": 1440625,
