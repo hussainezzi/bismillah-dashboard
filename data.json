@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-30 11:00:11",
-  "period": "1-May to 30-May-2026",
+  "generated_at": "2026-05-31 11:00:11",
+  "period": "1-May to 31-May-2026",
   "month_total": 171279,
   "month_orders": 16,
   "active_customers": 5,
@@ -162,24 +162,24 @@
       "sku": "FURN_6667",
       "stock": 16,
       "sold": 36,
-      "daily": 1.2,
-      "days_left": 13.3
+      "daily": 1.16,
+      "days_left": 13.8
     },
     {
       "name": "Office Chair Black",
       "sku": "FURN_0269",
       "stock": 10,
       "sold": 14,
-      "daily": 0.47,
-      "days_left": 21.4
+      "daily": 0.45,
+      "days_left": 22.1
     },
     {
       "name": "Large Cabinet",
       "sku": "E-COM07",
       "stock": 230,
       "sold": 300,
-      "daily": 10.0,
-      "days_left": 23.0
+      "daily": 9.68,
+      "days_left": 23.8
     }
   ],
   "inventory": {
@@ -388,11 +388,11 @@
     ]
   },
   "cashflow": {
-    "forecast_date": "30-May-2026",
-    "forecast_until": "29-Jun-2026",
-    "total_in_30": 1441880,
-    "total_out_30": 1255,
-    "net_30": 1440625,
+    "forecast_date": "31-May-2026",
+    "forecast_until": "30-Jun-2026",
+    "total_in_30": 1613777,
+    "total_out_30": 19195,
+    "net_30": 1594582,
     "total_receivable": 1613777,
     "total_payable": 19195,
     "overdue_count": 12,
@@ -492,6 +492,46 @@
         "due_date": "2026-05-23",
         "amount": 52650,
         "overdue": true
+      },
+      {
+        "ref": "INV/2026/00001",
+        "customer": "Punjab Customer",
+        "company": "Bismillah Traders",
+        "due_date": "2026-06-30",
+        "amount": 90652,
+        "overdue": false
+      },
+      {
+        "ref": "INV/2026/00002",
+        "customer": "Punjab Customer",
+        "company": "Bismillah Traders",
+        "due_date": "2026-06-30",
+        "amount": 9745,
+        "overdue": false
+      },
+      {
+        "ref": "INV/2026/00003",
+        "customer": "Gemini Furniture",
+        "company": "Bismillah Traders",
+        "due_date": "2026-06-30",
+        "amount": 8000,
+        "overdue": false
+      },
+      {
+        "ref": "INV/2026/00004",
+        "customer": "Azure Interior",
+        "company": "Bismillah Traders",
+        "due_date": "2026-06-30",
+        "amount": 31750,
+        "overdue": false
+      },
+      {
+        "ref": "INV/2026/00001",
+        "customer": "Azure Interior",
+        "company": "Makkah Lockers",
+        "due_date": "2026-06-30",
+        "amount": 31750,
+        "overdue": false
       }
     ],
     "cash_out": [
@@ -510,6 +550,46 @@
         "due_date": "2026-05-06",
         "amount": 622,
         "overdue": true
+      },
+      {
+        "ref": "BILL/2026/05/0004",
+        "vendor": "Azure Interior",
+        "company": "Bismillah Traders",
+        "due_date": "2026-06-30",
+        "amount": 30,
+        "overdue": false
+      },
+      {
+        "ref": "BILL/2026/05/0003",
+        "vendor": "Islamabad Vendor",
+        "company": "Bismillah Traders",
+        "due_date": "2026-06-30",
+        "amount": 3270,
+        "overdue": false
+      },
+      {
+        "ref": "BILL/2026/05/0002",
+        "vendor": "Islamabad Vendor",
+        "company": "Bismillah Traders",
+        "due_date": "2026-06-30",
+        "amount": 11280,
+        "overdue": false
+      },
+      {
+        "ref": "BILL/2026/05/0001",
+        "vendor": "Islamabad Vendor",
+        "company": "Bismillah Traders",
+        "due_date": "2026-06-30",
+        "amount": 3330,
+        "overdue": false
+      },
+      {
+        "ref": "BILL/2026/05/0001",
+        "vendor": "Azure Interior",
+        "company": "Makkah Lockers",
+        "due_date": "2026-06-30",
+        "amount": 30,
+        "overdue": false
       }
     ]
   }
