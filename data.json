@@ -1,12 +1,44 @@
 {
-  "generated_at": "2026-06-09 11:00:24",
+  "generated_at": "2026-06-09 21:00:31",
   "period": "1-Jun to 09-Jun-2026",
-  "month_total": 0,
-  "month_orders": 0,
-  "active_customers": 0,
+  "month_total": 931320,
+  "month_orders": 2,
+  "active_customers": 2,
   "critical_stock": 0,
-  "products": [],
-  "customers": [],
+  "products": [
+    {
+      "name": "[4-BURNER-STOVE-WITH-OVEN] 4 Burner Stove With Oven",
+      "sku": "4-BURNER-STOVE-WITH-OVEN",
+      "qty": 8,
+      "revenue": 532000,
+      "order_count": 0,
+      "pct": 66.8
+    },
+    {
+      "name": "Roti Maker 60l",
+      "sku": "",
+      "qty": 6,
+      "revenue": 264000,
+      "order_count": 0,
+      "pct": 33.2
+    }
+  ],
+  "customers": [
+    {
+      "name": "Taher",
+      "count": 1,
+      "total": 622440,
+      "pct": 66.8,
+      "last_order": "2026-06-09"
+    },
+    {
+      "name": "Raza Ali",
+      "count": 1,
+      "total": 308880,
+      "pct": 33.2,
+      "last_order": "2026-06-09"
+    }
+  ],
   "stock_alerts": [],
   "inventory": {
     "total_value": 359360,
