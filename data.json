@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-08 21:00:16",
-  "period": "1-Jun to 08-Jun-2026",
+  "generated_at": "2026-06-09 11:00:24",
+  "period": "1-Jun to 09-Jun-2026",
   "month_total": 0,
   "month_orders": 0,
   "active_customers": 0,
@@ -214,8 +214,8 @@
     ]
   },
   "cashflow": {
-    "forecast_date": "08-Jun-2026",
-    "forecast_until": "08-Jul-2026",
+    "forecast_date": "09-Jun-2026",
+    "forecast_until": "09-Jul-2026",
     "total_in_30": 1613777,
     "total_out_30": 19195,
     "net_30": 1594582,
