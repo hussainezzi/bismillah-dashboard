@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10 11:14:09",
+  "generated_at": "2026-06-10 21:42:08",
   "period": "1-Jun to 10-Jun-2026",
   "month_total": 931320,
   "month_orders": 2,
@@ -42,8 +42,8 @@
   "stock_alerts": [],
   "inventory": {
     "total_value": 359360,
-    "total_items": 26,
-    "total_units": 1267,
+    "total_items": 27,
+    "total_units": 1293,
     "top_product": {
       "name": "Large Cabinet",
       "sku": "E-COM07",
@@ -233,6 +233,13 @@
         "qty": 16,
         "cost": 0,
         "value": 0
+      },
+      {
+        "name": "Roti Maker 60l",
+        "sku": "",
+        "qty": 26,
+        "cost": 0,
+        "value": 0
       }
     ],
     "categories": [
@@ -242,6 +249,13 @@
         "qty": 1267,
         "value": 359360,
         "pct": 100.0
+      },
+      {
+        "name": "All / Saleable / Kitchen Equipment",
+        "items": 1,
+        "qty": 26,
+        "value": 0,
+        "pct": 0.0
       }
     ]
   },
