@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-28 21:00:26",
-  "period": "1-Jul to 28-Jul-2026",
+  "generated_at": "2026-07-29 11:00:29",
+  "period": "1-Jul to 29-Jul-2026",
   "month_total": 0,
   "month_orders": 0,
   "active_customers": 0,
@@ -228,14 +228,14 @@
     ]
   },
   "cashflow": {
-    "forecast_date": "28-Jul-2026",
-    "forecast_until": "27-Aug-2026",
+    "forecast_date": "29-Jul-2026",
+    "forecast_until": "28-Aug-2026",
     "total_in_30": 1964777,
     "total_out_30": 19195,
     "net_30": 1945582,
     "total_receivable": 1964777,
     "total_payable": 19195,
-    "overdue_count": 17,
+    "overdue_count": 18,
     "cash_in": [
       {
         "ref": "INV/2026/00007",
@@ -379,7 +379,7 @@
         "company": "Bismillah Traders",
         "due_date": "2026-07-28",
         "amount": 58500,
-        "overdue": false
+        "overdue": true
       },
       {
         "ref": "INV/2026/00013",
